@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <description>Lwc Custom Related List</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Lwc Custom Related List</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="title" type="String" placeholder="Title of the related list"/>
+            <property name="iconName" type="String" placeholder="eg: standard:opportunity"/>
+            <property name="sObjectName" type="String" placeholder="eg: Opportunity"/>
+            <property name="soqlQuery" type="String" placeholder="eg: SELECT Name,Amount FROM Opportunity Where AccountId = :recordId"/>
+        </targetConfig>
+    </targetConfigs>
+
+</LightningComponentBundle>

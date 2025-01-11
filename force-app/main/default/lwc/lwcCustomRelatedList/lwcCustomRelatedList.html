@@ -1,0 +1,32 @@
+<!--
+ - Created by kamlesh on 18-01-2023.
+ -->
+
+<!-- Lwc Custom Related List -->
+<template>
+
+    <div class="" style="border:0.5px solid;border-radius : 4px;border-color:#d6d6d6;border-style:solid">
+        <lightning-card title={title} icon-name={iconName} class="slds-card_boundary">
+            <!--<lightning-button label="Refresh" slot="actions"></lightning-button>-->
+
+            <lightning-spinner if:false={showSpinner}></lightning-spinner>
+            <div class="slds-p-around--small" if:true={showDataTable}>
+                <div class="slds-grid slds-wrap slds-size_12-of-12">
+                    <div class="slds-size_12-of-12 slds-theme--shade" style="border-radius:3px;border:1px;border-style:solid;border-color:#d6d6d6">
+                        <div class="" style="height: 300px;">
+                            <lightning-datatable
+                                    key-field="id"
+                                    data={tableData}
+                                    columns={getColumns}
+                                    hide-checkbox-column="true"
+                                    show-row-number-column="true"
+                                    if:true={showDataTable}>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+
+</template>
