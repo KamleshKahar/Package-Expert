@@ -1,0 +1,77 @@
+/**
+ * Created by Kamlesh Kahar
+ */
+
+.showUnderLine{
+    border-bottom: solid 1px rgb(239, 239, 239);
+}
+
+.fieldsContainer{
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.pencilIconStyle{
+    float: right;
+    /*--slds-c-button-text-color-hover: darkgrey !important;*/
+    color: #f3f3f3 !important;
+}
+
+lightning-primitive-icon{
+    color: #f3f3f3 !important;
+}
+
+.detailStyle{
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+/*Animate Section collapse/expand START*/
+details summary {
+    cursor: pointer;
+    transition: margin 250ms ease-out;
+}
+details[open] summary {
+    margin-bottom: 10px;
+}
+.sectionIcon{
+    transition-duration: 0.5s;
+}
+/*Animate Section collapse/expand END*/
+
+.sectionStyle{
+    background-color: rgb(243,243,243);
+    padding: 7px;
+    border-radius: 5px;
+    /*border: 1px solid grey;*/
+    /*box-shadow: 1px 1px 2px #bbbbbb;*/
+    cursor: pointer;
+}
+.sectionStyle.focus{
+    border: 1px solid #bddaef;
+    box-shadow: 0px 0px 2px 1px #bddaef;
+}
+
+.sectionTitleStyle{
+    padding-left: 8px;
+    font-weight: 500;
+}
+
+.buttonStyle{
+    padding: 5px;
+}
+
+.transformSectionIcon90Degrees{
+    transform: rotate(-90deg);
+}
+.recordFooter{
+    position: sticky !important;
+    background-color: white !important;
+    box-shadow: none !important;
+}
+
+.slds-input[readonly]{
+    border: none !important;
+    background-color: white !important;
+}

@@ -1,0 +1,100 @@
+<!--
+ - Created by Kamlesh Kahar
+ -->
+
+<!-- Lwc Custom Record Detail Page -->
+<template>
+    <div style="padding: 5px; background-color: white; position: relative;">
+        <div if:true={processing}>
+            <lightning-spinner alternative-text="Processing..."></lightning-spinner>
+        </div>
+        <lightning-record-edit-form
+                record-id={recordId}
+                object-api-name={objectApiName}
+                onsuccess={handleOnSaveSuccess}
+                onerror={handleErrorWhileSaving}
+                onsubmit={handleClickSave}
+        >
+            <template for:each={fieldSets} for:item="fieldSet" for:index="i">
+                <details open key={fieldSet.sectionName} class="detailStyle">
+                    <summary class="sectionStyle" data-id={i} data-sectionsummary={i} onclick={handleSectionClick} onfocus={onFocusSectionHandler} onfocusout={onFocusoutSectionHandler}>
+                        <lightning-icon icon-name="utility:chevrondown" alternative-text="Connected" size="xx-small"
+                                        title="xx-small size" class="sectionIcon" data-id={i} data-icon={i}></lightning-icon>
+                        <span class="sectionTitleStyle" data-id={i}>{fieldSet.sectionName}</span>
+                    </summary>
+
+                    <template for:each={fieldSet.fields} for:item="field">
+                        <div key={field} class="fieldsContainer">
+                            <lightning-input-field field-name={field}></lightning-input-field>
+                            <div key={field} class="slds-grid">
+
+                                <!--Column one-->
+                                <div class="slds-col" style="width: 45%;">
+                                    <div if:true={isEditMode}>
+                                        <lightning-input-field if:true={field.isEditable1} field-name={field.field1}></lightning-input-field>
+                                        <lightning-input-field if:false={field.isEditable1} field-name={field.field1} disabled="true"></lightning-input-field>
+                                    </div>
+
+                                    <div if:false={isEditMode} class="slds-grid showUnderLine">
+                                        <div class="slds-col slds-size_11-of-12">
+                                            <lightning-output-field field-name={field.field1} ondblclick={handleEdit}></lightning-output-field>
+                                        </div>
+                                        <div class="slds-col" if:true={field.isEditable1}>
+                                            <lightning-button-icon icon-name="utility:edit" variant="bare" alternative-text="edit" title="edit"
+                                                                   onclick={handleEdit} class="pencilIconStyle">
+                                            </lightning-button-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col" style="max-width: 50px;"></div> <!--Column divider-->
+
+                                <!--Column two-->
+                                <div class="slds-col" style="width: 45%;">
+                                    <div if:true={field.showField2}>
+                                        <div if:true={isEditMode}>
+                                            <lightning-input-field if:true={field.isEditable2} field-name={field.field2}></lightning-input-field>
+                                            <lightning-input-field if:false={field.isEditable2} field-name={field.field2} disabled="true"></lightning-input-field>
+                                        </div>
+
+                                        <div if:false={isEditMode} class="slds-grid showUnderLine">
+                                            <div class="slds-col slds-size_11-of-12">
+                                                <lightning-output-field field-name={field.field2} ondblclick={handleEdit}></lightning-output-field>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-12" if:true={field.isEditable2}>
+                                                <lightning-button-icon icon-name="utility:edit" variant="bare" alternative-text="edit" title="edit"
+                                                                       onclick={handleEdit} class="pencilIconStyle"></lightning-button-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </template>
+                </details>
+            </template>
+
+            <div class="slds-docked-form-footer recordFooter" if:true={isEditMode}>
+                <lightning-messages> </lightning-messages>
+            </div>
+            <div class="slds-docked-form-footer recordFooter" if:true={isEditMode}>
+                <lightning-messages> </lightning-messages>
+                <lightning-button
+                        class="buttonStyle"
+                        variant="neutral"
+                        name="cancel"
+                        label="Cancel"
+                        onclick={handleCancel}>
+                </lightning-button>
+                <lightning-button
+                        class="buttonStyle"
+                        variant="brand"
+                        type="submit"
+                        name="update"
+                        label="Save">
+                </lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </div>
+</template>

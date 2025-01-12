@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <description>Lwc Custom Record Detail Page</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Lwc Custom Record Detail Page</masterLabel>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__HomePage">
+            <property name="fieldSetNames" label="Field Set Names" placeholder="eg. fieldSet1,fieldSet2,..." type="String" description="Enter comma separated field Set api names" required="true" default="FieldSet1"/>
+            <property name="readOnlyFields" label="Read Only Field Names" placeholder="eg. field1,field2__c,..." type="String" description="Enter comma separated field api names to make them non editable on layout"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
